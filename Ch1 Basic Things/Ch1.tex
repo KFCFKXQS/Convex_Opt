@@ -1,5 +1,5 @@
 \documentclass{mytemplate}
-
+\usepackage{hyperref}
 \title{Chapter 1. 基础知识}
 
 \author{%
@@ -9,6 +9,8 @@
 
 \begin{document}
 \maketitle
+
+\tableofcontents
 \section{绪论}
 \subsection{最优化}
 一般描述为：
@@ -236,22 +238,28 @@ R-线性收敛, R-超线性收敛 \newpage
     \text{称$\sum_{i=1}^{m} \theta_i x_i$为$x_1,\dots ,x_m$的一个仿射组合}
 \end{definition}
 
-\subsection{仿射维数和相对内部}
-\begin{definition}{仿射维数}\\
-    集合C的仿射维数为其仿射包的维数。
-\end{definition}
+\fbox{
+    \parbox{\textwidth}{
+        \subsection{仿射维数和相对内部}
+        \begin{definition}{仿射维数}\\
+            集合C的仿射维数为其仿射包的维数。
+        \end{definition}
 
-\begin{definition}{相对内部}\\
-    定义集合C的相对内部为$\text{aff}\ C$的内部，记为$\text{relint}\ C$即
-    \[
-        \text{relint}\ C = \{
-        x \in C | B(x, r) \cap \text{aff}\ C \subseteq C, \exists r > 0
-        \}
-    \]
-\end{definition}
-\begin{definition}{相对边界}\\
-    定义集合C的相对边界为$\text{cl}C  \text{relint}C$
-\end{definition}
+        \begin{definition}{相对内部}\\
+            定义集合C的相对内部为$\text{aff}\ C$的内部，记为$\text{relint}\ C$即
+            \[
+                \text{relint}\ C = \{
+                x \in C | B(x, r) \cap \text{aff}\ C \subseteq C, \exists r > 0
+                \}
+            \]
+        \end{definition}
+        \begin{definition}{相对边界}\\
+            定义集合C的相对边界为$\text{cl}C  \text{relint}C$
+        \end{definition}
+    }
+}
+
+\newpage
 
 \begin{definition}{凸锥 Convex Cone}\\
     \[
@@ -259,7 +267,7 @@ R-线性收敛, R-超线性收敛 \newpage
     \]
     \text{若C为凸集,则称C为凸锥},即
     \[
-        x_1,x_2 \in C \Rightarrow \theta_1 x_1 +\theta_2 x_2 \in C, \forall \theta_!, \theta_2 \geq 0
+        x_1,x_2 \in C \Rightarrow \theta_1 x_1 +\theta_2 x_2 \in C, \forall \theta_1, \theta_2 \geq 0
     \]
 \end{definition}
 
@@ -275,6 +283,8 @@ R-线性收敛, R-超线性收敛 \newpage
 \begin{definition}{凸包\ 仿射包\ 凸锥包}\\
     集合C中任意元素的凸组合、仿射组合、凸锥组合称为C的凸包、仿射包、凸锥包
 \end{definition}
+
+\newpage
 \subsection{超平面与半空间}
 \paragraph*{超平面：}
 \[
@@ -309,6 +319,8 @@ R-线性收敛, R-超线性收敛 \newpage
     % 标记原点
     \node at (0,0) [anchor=north east] {0};
 \end{tikzpicture}
+
+\newpage
 \subsection{范数球}
 
 \begin{definition}{Norm Ball}
@@ -325,8 +337,59 @@ R-线性收敛, R-超线性收敛 \newpage
     \end{align}
 \end{definition}
 \begin{definition}{椭球}\\
-    $\mathcal{E}=\{x \in \R^n | (x - x_c)^T P (x-x_c) \leq 1\}$
+    $\mathcal{E}=\{x \in \R^n | (x - x_c)^T P^{-1} (x-x_c) \leq 1\}$ \\
+    其中$P=P^T \succ 0$, 半轴长度由$\sqrt{\lambda_i}$给出\\
+    \\
+    \emph{例如:\[
+        x^T\begin{bmatrix}
+            4 & 0 \\
+            0 & 1
+        \end{bmatrix}^{-1}x \leq 1
+    \]
+    则\[
+        \frac{1}{4}x_1^2 + x_2^2 \leq 1
+    \]
+    特征值为4和1,则半轴长为2和1}
 \end{definition}
 
+\subsection{多面体与单纯形}
+\begin{definition}{多面体polyhedron}
+    \[
+        P = \{
+        x\ | a_i^T x \leq b_i,\ i = 1\dots m\ \ and\ \
+        c_j^T x = d_j,\ j=1\dots p
+        \}
+    \]
+\end{definition}
+\ \ \ \ 仿射集合、射线、线段和半空间都是多面体
+
+\begin{definition}{单纯形simplex}\\
+    \(v_0,v_1, \dots v_k\)共k+1个点仿射无关（即
+    \(v_1-v_0,\dots v_k-k_0\)线性无关），则$C=\text{Conv}\{v_0,v_1,\dots v_k\}$
+\end{definition}
+
+\newpage
+\subsection{矩阵空间}
+\begin{proposition}
+    \hspace*{1em}
+    \begin{enumerate}
+        \item 对称矩阵集$S^n$ \qquad\qquad\quad 显然是凸锥、凸集、仿射集
+        \item 对称半正定矩阵集$S_+^n$ \qquad 是凸锥、凸集，不是仿射集（如n=1时为全体非负实数$\R_+$）
+        \item 对称正定矩阵集$S_{++}^n$ \qquad 是凸集，不是凸锥、仿射集（如n=1时为全体正实数$R_{++}$）
+    \end{enumerate}
+\end{proposition}
+对称半正定矩阵是凸锥\\
+Prove:
+\begin{align}
+     &                                   &        & \forall A,B \in S_+^n, \forall  x\in \R^n, x^T A x \geq 0, x^T B x \geq 0 &  & \\
+     & \forall \theta_0,\theta_1 \geq 0, &        & x^T(\theta_0 A+\theta_1B)x                                                &  & \\
+     &                                   & =\     & \theta_0x^T A x+\theta_1x^T B x                                           &  & \\
+     &                                   & \geq\  & 0                                                                         &  &
+\end{align}
+显然$\theta_0, \theta_1$可以同时0，因此严格的>是不满足的，即\textcolor{red}{对称正定矩阵集合不是凸锥}\\
+（但显然是凸集，因为凸集中$1^T\vec{\theta} = 1$，不能同时取0）
+
+
+\section{保凸运算}
 
 \end{document}

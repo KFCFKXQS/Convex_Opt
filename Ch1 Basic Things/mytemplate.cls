@@ -6,7 +6,6 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{ctex}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{hyperref}
 \RequirePackage{url}
 \RequirePackage{booktabs}
 \RequirePackage{amsfonts}
@@ -25,6 +24,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{mdframed}
 \RequirePackage{tikz}
+\RequirePackage{hyperref}
 \lstset{
     language=Python, % 设置语言
     basicstyle=\ttfamily, % 设置字体族
