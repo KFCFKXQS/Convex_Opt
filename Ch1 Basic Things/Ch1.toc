@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}绪论}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}最优化}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}课程内容}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}基础知识}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}向量}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}矩阵}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Basic Concepts In Optimization}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}迭代算法}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}最优化问题}{6}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}分类}{6}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}算法评价标准}{6}{subsubsection.2.5.2}%
+\contentsline {paragraph}{1}{6}{section*.4}%
+\contentsline {paragraph}{2}{6}{section*.5}%
+\contentsline {paragraph}{3}{6}{section*.6}%
+\contentsline {section}{\numberline {3}凸集\ 仿射集\ 凸锥}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}仿射维数和相对内部}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}超平面与半空间}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}范数球}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}球和椭球}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}多面体与单纯形}{10}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}矩阵空间}{11}{subsection.3.6}%
+\contentsline {section}{\numberline {4}保凸运算}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}交集}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}直和}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}线性矩阵不等式}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}仿射映射}{11}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}透视函数}{11}{subsection.4.5}%
