@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}凸集\ 仿射集\ 凸锥}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}仿射维数和相对内部}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}重要的例子}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}超平面与半空间}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}范数球}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}球和椭球}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}多面体与单纯形}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}矩阵空间}{6}{subsection.2.5}%
+\contentsline {section}{\numberline {3}保凸运算}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}交集}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}仿射函数}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}线性分式及透视函数}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}凸函数}{7}{section.4}%

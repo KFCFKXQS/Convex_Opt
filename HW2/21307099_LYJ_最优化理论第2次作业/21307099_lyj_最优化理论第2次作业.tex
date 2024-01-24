@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ctex}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{algobox}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{microtype}
+
+\usepackage[preprint]{neurips_2020} % Use PDFLaTex to compile
+\title{最优化理论 Homework2}
+
+\author{21307099 李英骏}
+
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\begin{align*}
+    f(\theta \vec{x} + (1-\theta)\vec{y}) & = \max_{i=1, \ldots, n} f_i(\theta \vec{x} + (1-\theta)\vec{y})                                   \\
+                                          & = \max_{i=1, \ldots, n} (\theta f_i(\vec{x}) + (1-\theta)f_i(\vec{y}))                            \\
+                                          & \leq \max_{i=1, \ldots, n} (\theta f_i(\vec{x})) + \max_{i=1, \ldots, n} ((1-\theta)f_i(\vec{y})) \\
+                                          & = \theta \max_{i=1, \ldots, n} f_i(\vec{x}) + (1-\theta) \max_{i=1, \ldots, n} f_i(\vec{y})       \\
+                                          & = \theta f(\vec{x}) + (1-\theta)f(\vec{y})                                                        \\
+                                          & \emph{因此f为凸函数}
+\end{align*}
+
+\section*{Problem 2}
+定义拉格朗日函数为：
+\begin{equation*}
+    L(x, \lambda, v) = c^T x + \lambda(Gx-h) + v(Ax-b) = (c^T + \lambda G + v A)x - \lambda h - v b
+\end{equation*}
+
+\begin{equation*}
+    \max_{x \in D} L(x,\lambda,v) =
+    \begin{cases}
+        c^Tx,    & x \in D    \\
+        -\infty, & x \notin D
+    \end{cases}
+\end{equation*}
+
+\begin{equation*}
+    \therefore g(\lambda,v) = \inf_{x \in D} L(x,\lambda,v) =
+    \begin{cases}
+        -\lambda h - v b, & c^T + \lambda G + v A = 0 \\
+        -\infty,          & \text{其他}
+    \end{cases}
+\end{equation*}
+
+因此对偶问题为：
+\begin{equation*}
+    \max \{-\lambda h - v b\}
+\end{equation*}
+\begin{equation*}
+    \text{s.t.} \quad c^T + \lambda G + v A = 0
+\end{equation*}
+\begin{equation*}
+    \lambda \geq 0
+\end{equation*}
+
+根据强对偶性，有：
+\begin{equation*}
+    d^* = \sup_{\lambda \geq 0, v} \inf_{x \in D} L(x, \lambda, v)
+\end{equation*}
+\begin{equation*}
+    = \inf_{x \in D} L(x, \lambda^*, v^*) \leq L(x^*, \lambda^*, v^*)
+\end{equation*}
+\begin{equation*}
+    \leq f(x^*) = p^*
+\end{equation*}
+
+依据KKT条件：
+\begin{equation*}
+    \nabla_x L(x^*, \lambda^*, v^*) = c^T + \lambda^* G + v^* A = 0
+\end{equation*}
+\begin{equation*}
+    \therefore \begin{cases}
+        Gx^* \leq h            \\
+        Ax^* = b               \\
+        \lambda^* \geq 0       \\
+        \lambda^* (Gx^*-h) = 0 \\
+        c^T + \lambda^* G + v^* A = 0
+    \end{cases}
+\end{equation*}
+
+\section*{Problem 3}
+
+对于给定的参考点 $x_0$ ，我们希望找到最小化目标函数的向量 $x$\\
+考虑以下拉格朗日函数 $\mathcal{L}$
+\begin{equation}
+    \mathcal{L}(\mathbf{x}, \{\mathbf{y}_i\}_{i=1}^N) = \sum_{i=1}^{N} \|\mathbf{y}_i\|_2 + \frac{1}{2}\|\mathbf{x} - \mathbf{x_0}\|_2^2 - \sum_{i=1}^{N} (\mathbf{y}_i - \mathbf{A}_i\mathbf{x} - \mathbf{b}_i)^T\mathbf{z}_i
+\end{equation}
+
+为解决这个优化问题，我们首先关注中间变量 $\mathbf{y}_i$，注意到它非光滑
+\begin{equation}
+    \inf_{\mathbf{y}_i} \left( \|\mathbf{y}_i\|_2^2 + (\mathbf{z}_i)^T\mathbf{y}_i \right) =
+    \begin{cases}
+        0,       & \text{若 } \|\mathbf{z}_i\|_2 \leq 1, \\
+        -\infty, & \text{若 } \|\mathbf{z}_i\|_2 > 1.
+    \end{cases}
+\end{equation}
+
+接下来需要找到原始变量 $\mathbf{x}$ 的最优值。将 $\mathbf{x}$ 的梯度设为0
+
+\begin{equation}
+    \mathbf{x}^* = \mathbf{x_0} + \sum_{i=1}^{N} (\mathbf{A}_i)^T \mathbf{z}_i
+\end{equation}
+
+将结果代入拉格朗日函数，得到对偶问题的目标函数。函数描述了在拉格朗日乘子的约束下的最佳值
+
+\begin{equation}
+    \mathcal{G}(\mathbf{z}_1, \ldots, \mathbf{z}_N) =
+    \begin{cases}
+        -\frac{1}{2} \sum_{i=1}^{N} \|\mathbf{A}_i^T \mathbf{z}_i \|_2^2 + \sum_{i=1}^{N} (\mathbf{A}_i \mathbf{x_0} + \mathbf{b}_i)^T \mathbf{z}_i, & \text{如果 } \|\mathbf{z}_i\|_2 \leq 1 \quad \forall i, \\
+        -\infty,                                                                                                                                     & \text{其他}.
+    \end{cases}
+\end{equation}
+
+对偶问题涉及最大化上述对偶函数，并受每个拉格朗日乘子范数必须小于或等于1的约束。
+
+\begin{align}
+    \text{maximize} \quad   & \sum_{i=1}^{N} (A_i x_0 + b_i)^T z_i - \frac{1}{2} \sum_{i=1}^{N} \| A_i^T z_i \|_2^2 \\
+    \text{subject to} \quad & \|z_i\|_2 \leq 1, \, \forall i \in \{1, \ldots, N\}.
+\end{align}
+
+\end{document}
